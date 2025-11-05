@@ -1,35 +1,8 @@
-
-<table style="border-collapse: collapse; border: none;">
-  <tr style="border: none;">
-    <td width="20%" style="border: none;">
-      <a href="https://decodingml.substack.com/" aria-label="Decoding ML">
-        <img src="https://github.com/user-attachments/assets/f2f2f9c0-54b7-4ae3-bf8d-23a359c86982" alt="Decoding ML Logo" width="150"/>
-      </a>
-    </td>
-    <td width="80%" style="border: none;">
-      <div>
-        <h2>📬 Stay Updated</h2>
-        <p><b><a href="https://decodingml.substack.com/">Join Decoding ML</a></b> for proven content on designing, coding, and deploying production-grade AI systems with software engineering and MLOps best practices to help you ship AI applications. Every week, straight to your inbox.</p>
-      </div>
-    </td>
-  </tr>
-</table>
-
-<p align="center">
-  <a href="https://decodingml.substack.com/">
-    <img src="https://img.shields.io/static/v1?label&logo=substack&message=Subscribe%20Now&style=for-the-badge&color=black&scale=2" alt="Subscribe Now" height="40">
-  </a>
-</p>
-
-------
-
 ## 🚀 Project Overview
 
-This project is part of the **MCP Enterprise Series**, where we teach you how to use the **Model Context Protocol (MCP)** at a **production level**. The series focuses on best practices for building scalable automation systems that combine tools, resources, and prompt templates—powering intelligent workflows across your enterprise.
+This folder contains the **MCP Servers**: independent, modular services built using the **Model Context Protocol (MCP)**. These servers expose enterprise resources, tool APIs, and prompt libraries for building scalable automation systems.
 
-This folder contains the **MCP Servers**: independent, modular services that expose enterprise resources, tool APIs, and prompt libraries.  
-
-All these services are **aggregated into a single MCP Global Server**, which automatically assigns **tags** to each resource, allowing you to **filter and query** them easily. This unified view ensures all available services in your enterprise are accessible from one place.
+All these services are **aggregated into a single MCP Global Server**, which automatically assigns **tags** to each resource, allowing you to **filter and query** them easily.
 
 # The PR Reviewer MCP Servers
 
@@ -79,10 +52,9 @@ Instructions and links for obtaining these API tokens are provided in the sectio
 
 # 🎯 Getting Started
 
-### 1. **Clone the repo**
+### 1. **Navigate to the project directory**
    ```bash
-   git clone https://github.com/decodingml/enterprise-mcp-series.git
-   cd enterprise-mcp-series/apps/pr-reviewer-mcp-servers
+   cd apps/pr-reviewer-mcp-servers
    ```
 ### 2. **Install project dependencies**
 ```bash
@@ -109,24 +81,14 @@ Before you can use the APIs, you must register your own app with each service to
 **A) Register your Slack App**
 
 
-1. **Create the app**  
-   Go to Slack → [Your Apps](https://api.slack.com/apps) and create a new app.  
+1. **Create the app**
+   Go to Slack → [Your Apps](https://api.slack.com/apps) and create a new app.
 
-   ![Register a Slack app](/static/register_slack.png)
+2. **Configure OAuth & permissions**
+   Set your redirect URL and add bot scopes in the **OAuth & Permissions** tab. Add the following bot scopes: `channels:history`, `channels:read`, `chat:write`, `users:read`.
 
-2. **Configure OAuth & permissions**  
-   Set your redirect URL and add bot scopes in the **OAuth & Permissions** tab.  
-
-   ![Setting the Redirect URL](/static/slack_redirect.png)  
-
-   Add the following bot scopes:  
-
-   ![Bot scopes for Slack](/static/slack_bot_scopes.png)
-
-3. **Install to workspace**  
-   Install the app to your workspace to obtain your **Bot Token**.  
-
-   ![Installing your App](/static/slack_install.png)
+3. **Install to workspace**
+   Install the app to your workspace to obtain your **Bot Token**.
 
 4. **Environment variables**  
    Add your bot token to `.env`:  
@@ -139,10 +101,7 @@ Before you can use the APIs, you must register your own app with each service to
 
 **B) Registering your app in Github**
 
-1.  [Register your OAuth App in GitHub](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)
-![Registering an OAuth App](/static/register_github.png)
-
-After registering, you will receive a **Client ID** and **Client Secret**.
+1. [Register your OAuth App in GitHub](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app). After registering, you will receive a **Client ID** and **Client Secret**.
 
 2. Open `.env` and fill in the required credentials 
 ```dotenv
@@ -157,11 +116,9 @@ make register-github
 ```
 Please follow the indications in the CLI.
 
-> **Token Tip:** When authorizing your GitHub app, you can simply copy the code directly from the URL after the browser redirects you (as highlighted in the image below) and paste it into the CLI, as requested. This makes it easy to obtain the GitHub access token for your MCP server without deploying a public callback endpoint during development.  
+> **Token Tip:** When authorizing your GitHub app, you can simply copy the code directly from the URL after the browser redirects you and paste it into the CLI. This makes it easy to obtain the GitHub access token for your MCP server without deploying a public callback endpoint during development.
 
-![GitHub code example](/static/github-code.png)
-
-After copying this code in your CLI you will receive your GITHUB_ACCESS_TOKEN. 
+After entering the code in your CLI you will receive your GITHUB_ACCESS_TOKEN. 
 
 Fill it in the .env file:
 ```dotenv
@@ -185,9 +142,7 @@ Fill it in the .env file:
 ASANA_TOKEN=<your_asana_token>
 ```
 
-You can get the ASANA_PROJECT_GID from the URL of your Asana board:
-
-![Asana Board](/static/asana_board.png)
+You can get the ASANA_PROJECT_GID from the URL of your Asana board.
 
 
 **D) Obtain your Opik Token**
@@ -327,11 +282,7 @@ You will see traces for each server event, including:
 - API requests to GitHub, Slack, Asana, etc.
 - Prompt fetches and responses
 
-![Observability with Opik](/static/opik_servers.png)
-
- Additionally, the prompts served by the MCP Servers are versioned and tracked in the Prompts Library.
-
-![Prompt Versioning with Opik](/static/opik_prompts.png)
+Additionally, the prompts served by the MCP Servers are versioned and tracked in the Prompts Library.
 
 # 🛠 Utility Commands
 

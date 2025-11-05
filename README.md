@@ -6,12 +6,6 @@
 
 </br>
 
-<p align="center">
-  <a href="#">
-    <img src="static/architecture.png" alt="MCP Architecture" width="600">
-  </a>
-</p>
-
 ## 📖 About
 
 The **MCP Automation System** is a production-ready AI automation platform built with the **Model Context Protocol (MCP)**. This system demonstrates how to build modular, scalable automation workflows that integrate multiple tools and services.
@@ -41,7 +35,6 @@ mcp-automation-system/
 ├── apps/
 │   ├── pr-reviewer-mcp-host/      # MCP host & client manager
 │   └── pr-reviewer-mcp-servers/   # MCP servers (GitHub, Slack, Asana, Tool Registry)
-├── static/                        # Images and diagrams
 ├── LICENSE
 └── README.md
 ```

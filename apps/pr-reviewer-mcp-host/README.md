@@ -1,31 +1,6 @@
-
-<table style="border-collapse: collapse; border: none;">
-  <tr style="border: none;">
-    <td width="20%" style="border: none;">
-      <a href="https://decodingml.substack.com/" aria-label="Decoding ML">
-        <img src="https://github.com/user-attachments/assets/f2f2f9c0-54b7-4ae3-bf8d-23a359c86982" alt="Decoding ML Logo" width="150"/>
-      </a>
-    </td>
-    <td width="80%" style="border: none;">
-      <div>
-        <h2>📬 Stay Updated</h2>
-        <p><b><a href="https://decodingml.substack.com/">Join Decoding ML</a></b> for proven content on designing, coding, and deploying production-grade AI systems with software engineering and MLOps best practices to help you ship AI applications. Every week, straight to your inbox.</p>
-      </div>
-    </td>
-  </tr>
-</table>
-
-<p align="center">
-  <a href="https://decodingml.substack.com/">
-    <img src="https://img.shields.io/static/v1?label&logo=substack&message=Subscribe%20Now&style=for-the-badge&color=black&scale=2" alt="Subscribe Now" height="40">
-  </a>
-</p>
-
-------
-
 # 🚀 Project Overview
-This project is part of the **MCP Enterprise Series**, where we teach you how to leverage the **Model Context Protocol (MCP)** at a **production level**.  
-The series covers best practices for building scalable, multi-tool automation systems powered by LLMs.
+
+This folder contains the **MCP Host**: the central orchestrator built using the **Model Context Protocol (MCP)** that connects to multiple MCP servers and coordinates their outputs for building scalable, multi-tool automation systems powered by LLMs.
 
 The project is structured into **two main parts**:
 
@@ -78,10 +53,9 @@ Authentication is managed via environment variables stored in your `.env` file:
 
 # 🎯 Getting Started
 
-1. **Clone the repo**
-   ```bash 
-   git clone https://github.com/decodingml/enterprise-mcp-series.git
-   cd enterprise-mcp-series/apps/pr-reviewer-mcp-host
+1. **Navigate to the project directory**
+   ```bash
+   cd apps/pr-reviewer-mcp-host
    ```
 
 2. **Set up your environment variables**  
@@ -108,12 +82,10 @@ Authentication is managed via environment variables stored in your `.env` file:
 
 ### How do you find your slack id channel?
 
-1. Open the Slack channel you want to use for PR review updates.  
-2. Click right on the channel name at the top to open **View channel details**.  
-3. Scroll down to the bottom of the details view.  
-4. Look for the **Channel ID** and click **Copy channel ID**.  
-
-![Slack Channel ID](/static/slack_channel_id.png)
+1. Open the Slack channel you want to use for PR review updates.
+2. Click right on the channel name at the top to open **View channel details**.
+3. Scroll down to the bottom of the details view.
+4. Look for the **Channel ID** and click **Copy channel ID**.
 ### ⚠️ Required MCP Servers
 
 This project works as the **host and orchestrator**, so it relies on external **MCP servers** to provide the actual data and tools used in the PR review process.
@@ -179,15 +151,10 @@ ngrok http 5001
 
 This will generate a public URL (e.g., https://ae82d4550d91.ngrok-free.app`) that forwards requests to your local server.
 
-![ngrok example](/static/ngrok.png)
-
 ### Configure the GitHub Webhook
 
 Copy the generated ngrok URL and add the endpoint suffix `/webhook` to it (e.g., `https://ae82d4550d91.ngrok-free.app/webhook`).
 Go to your GitHub repository settings and add this as a webhook endpoint.
-
-
-  ![GitHub webhook setup](/static/webhook.png)
 
 Configure the webhook to trigger on **Pull Request** events (you can filter for `opened` actions in your code).
 
@@ -229,8 +196,6 @@ You will see traces for each webhook event, including:
 - Context/tool fetches from MCP servers
 - LLM (Gemini) calls
 - Slack notification delivery
-
-![Observability with Opik](/static/opik_host.png)
 
 
 ## 🛠 Utility Commands
